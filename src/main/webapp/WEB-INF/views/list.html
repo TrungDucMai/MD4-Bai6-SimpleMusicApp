@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="layout::menu"></div>
+<a th:href="@{/create}"> Create NewMusic</a>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Artist</td>
+        <td>Song</td>
+        <td>Action</td>
+
+    </tr>
+    <th:block>
+        <tr th:each="s : ${list}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.artist}"></td>
+            <td th:text="${s.songFile}"></td>
+            <td>
+                <audio id="track" controls loop>
+                    <source th:src="@{'/image/' + ${s.songFile}}"type="audio/ogg">
+                    <source th:src="@{'/image/' + ${s.songFile}}"type="audio/mpeg">
+                    <p>Your browser does not support the audio element</p>
+                </audio>
+            </td>
+            <td><a th:href="@{/edit/{id}(id=${s.id})}">Edit</a> </td>
+            <td><a th:href="@{/detail/{id}(id=${s.id})}">Detail</a> </td>
+            <td><a th:href="@{/delete/{id}(id=${s.id})}">Delete</a> </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

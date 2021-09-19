@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data" th:object="${music}" >
+    <input type="text" id="id"  th:field ="*{id}">
+    <input type="text" id="name"   th:field ="*{name}" >
+    <input type="text" id="email"   th:field ="*{artist}">
+    <input type="file" id="music"   th:field ="*{music}">
+    <button type="submit">Create</button>
+</form>
+
+</body>
+</html>
